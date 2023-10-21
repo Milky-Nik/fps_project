@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dww8mc23qvoyt"]
+
+[ext_resource type="Script" path="res://Scripts/Shooting System/bullet.cs" id="1_yv8ev"]
+[ext_resource type="PackedScene" uid="uid://c22433midv3fo" path="res://Art/Models/foamBulletB.glb" id="2_7wdm5"]
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_yv8ev")
+
+[node name="foamBulletB" parent="." instance=ExtResource("2_7wdm5")]
+transform = Transform3D(9.55343e-15, -2.18557e-07, 5, -5, -2.18557e-07, 0, 2.18557e-07, -5, -2.18557e-07, 0, 0, 0)

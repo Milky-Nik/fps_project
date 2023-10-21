@@ -1,0 +1,215 @@
+[gd_scene load_steps=22 format=3 uid="uid://d11wenmlsgguj"]
+
+[ext_resource type="Script" path="res://Scripts/player.cs" id="1_2nspr"]
+[ext_resource type="Script" path="res://Scripts/Player_Inputs.cs" id="2_5lv6q"]
+[ext_resource type="Script" path="res://Scripts/CharacterAnimController.cs" id="2_m0imy"]
+[ext_resource type="Script" path="res://Scripts/Camera_Controller.cs" id="3_dtxw0"]
+[ext_resource type="Script" path="res://Scripts/AttackManager.cs" id="4_4fayc"]
+[ext_resource type="Script" path="res://Scripts/Weapon_Manager.cs" id="4_olunx"]
+[ext_resource type="PackedScene" uid="uid://bpiyjjoiiwcjv" path="res://Art/Models/blasterA.glb" id="5_dxaai"]
+[ext_resource type="PackedScene" uid="uid://bomhnjxrs8t5t" path="res://Art/Models/blasterB.glb" id="6_od4bq"]
+[ext_resource type="Resource" uid="uid://do6ttuxobu6td" path="res://Resources/SMG.tres" id="7_0153s"]
+[ext_resource type="PackedScene" uid="uid://qiiot5h7uk2g" path="res://Art/Models/blasterD.glb" id="8_bwgrh"]
+[ext_resource type="Resource" uid="uid://b65vvkbgj5th5" path="res://Resources/AR.tres" id="8_g1b2x"]
+[ext_resource type="Resource" uid="uid://kexftwdoinrf" path="res://Resources/Pistol.tres" id="9_r7quo"]
+[ext_resource type="Resource" uid="uid://2yas66qmgwoc" path="res://Resources/Axe.tres" id="10_fjhbk"]
+[ext_resource type="PackedScene" uid="uid://br10drjptcrwk" path="res://Art/Models/toolAxe.glb" id="14_cpsuf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8usne"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6t42c"]
+height = 1.0
+
+[sub_resource type="Animation" id="Animation_ixm73"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2bt28"]
+resource_name = "hard_landing"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.122173, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.5, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5hykj"]
+resource_name = "jump"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0174533, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e7v11"]
+resource_name = "landing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0174533, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ang5i"]
+_data = {
+"RESET": SubResource("Animation_ixm73"),
+"hard_landing": SubResource("Animation_2bt28"),
+"jump": SubResource("Animation_5hykj"),
+"landing": SubResource("Animation_e7v11")
+}
+
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("standingCollisionShape", "crouchCollisionShape", "RayCrouchHeadCheck")]
+slide_on_ceiling = false
+script = ExtResource("1_2nspr")
+standingCollisionShape = NodePath("standing_collision")
+crouchCollisionShape = NodePath("crouch_collision")
+RayCrouchHeadCheck = NodePath("CheckCollision")
+gravityMultiplier = 1.0
+
+[node name="Player_Inputs" type="Node" parent="." node_paths=PackedStringArray("weapon_Manager", "attackManager")]
+script = ExtResource("2_5lv6q")
+weapon_Manager = NodePath("../CameraHandler/Camera3D/Weapon_Manager")
+attackManager = NodePath("../Attack_Manager")
+
+[node name="Animation_Controller" type="Node" parent="." node_paths=PackedStringArray("WeaponPosition", "animationPlayer", "player")]
+script = ExtResource("2_m0imy")
+WeaponPosition = NodePath("../CameraHandler/Camera3D/Weapon_Manager")
+animationPlayer = NodePath("../CameraHandler/Camera3D/AnimationPlayer")
+player = NodePath("..")
+
+[node name="Attack_Manager" type="Node" parent="." node_paths=PackedStringArray("characterAnimController")]
+script = ExtResource("4_4fayc")
+characterAnimController = NodePath("../Animation_Controller")
+
+[node name="standing_collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_8usne")
+
+[node name="crouch_collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_6t42c")
+disabled = true
+
+[node name="CheckCollision" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
+
+[node name="CameraHandler" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0)
+script = ExtResource("3_dtxw0")
+player = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="CameraHandler"]
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraHandler/Camera3D"]
+target_position = Vector3(0, 0, -50)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraHandler/Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_ang5i")
+}
+
+[node name="Weapon_Manager" type="Node3D" parent="CameraHandler/Camera3D" node_paths=PackedStringArray("attackManager")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.45, -0.3, -0.7)
+script = ExtResource("4_olunx")
+attackManager = NodePath("../../../Attack_Manager")
+weapon_stats1 = ExtResource("7_0153s")
+weapon_stats2 = ExtResource("8_g1b2x")
+weapon_stats3 = ExtResource("9_r7quo")
+weapon_stats4 = ExtResource("10_fjhbk")
+
+[node name="SMG" parent="CameraHandler/Camera3D/Weapon_Manager" instance=ExtResource("8_bwgrh")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+visible = false
+
+[node name="AR" parent="CameraHandler/Camera3D/Weapon_Manager" instance=ExtResource("5_dxaai")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+visible = false
+
+[node name="Pistol" parent="CameraHandler/Camera3D/Weapon_Manager" instance=ExtResource("6_od4bq")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+visible = false
+
+[node name="Axe" parent="CameraHandler/Camera3D/Weapon_Manager" instance=ExtResource("14_cpsuf")]
+transform = Transform3D(2.64243e-07, 0, -3.5, 0, 3.5, 0, 3.5, 0, 2.64243e-07, 0, -0.5, 0)
+visible = false

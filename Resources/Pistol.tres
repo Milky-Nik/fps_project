@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://kexftwdoinrf"]
+
+[ext_resource type="Script" path="res://Resources/WeaponStats.cs" id="1_55eq3"]
+
+[resource]
+script = ExtResource("1_55eq3")
+Damage = 3.0
+AttackSpeed = 0.3
+isMeleeWeapon = false

@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd7x7eiavkw8t"]
+
+[ext_resource type="Script" path="res://Scripts/Shooting System/shooting_system.cs" id="1_rm01d"]
+[ext_resource type="PackedScene" uid="uid://dww8mc23qvoyt" path="res://Scripts/Shooting System/Bullet.tscn" id="2_ipuwu"]
+[ext_resource type="PackedScene" uid="uid://2t7ecmxbklwk" path="res://Scripts/Shooting System/testCube.tscn" id="3_j4u5j"]
+
+[node name="ShootingSystem" type="Node3D"]
+script = ExtResource("1_rm01d")
+bulletPref = ExtResource("2_ipuwu")
+testCube = ExtResource("3_j4u5j")
